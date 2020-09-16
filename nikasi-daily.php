@@ -16,7 +16,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nikasi Daily</title>
-    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/variables-dark.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -25,7 +25,7 @@
     <header>
         <a href="./index.php" class="back"><i class="material-icons">arrow_back</i></a>
         <?php if($date == date('Y-m-d')):?>
-            <a href="#" class="option"><i class="material-icons">save</i>Save</a>
+            <a href="#" class="option"><i class="material-icons">done_all</i></a>
         <?php endif;?>
         <h1>Nikasi Daily</h1>
     </header>

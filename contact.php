@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/variables-dark.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -32,6 +32,7 @@
         <p class="title bold"><?php echo($user['address']);?></p>
         <p><?php echo($user['number']);?></p>
     </div>
+    <div class="bottom_size_fix"></div>
     <div class="list_top">
         <a href="<?php if($user['workid'] == 3): echo('./add/add-buggi-daily.php?contact='.$user['userid']); endif;?>" class="right"><i class="material-icons">add</i>Add</a>
         <h2 class='title'>Work</h2>

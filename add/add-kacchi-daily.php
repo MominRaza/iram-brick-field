@@ -30,25 +30,25 @@
             <?php endwhile;?>
         </select>
         <div class="row">
-            <div class="col-8">
+            <div class="col-11">
                 <p class="label">Row</p>
                 <input type="number" name="row" id="row" placeholder="Enter Row" required>
             </div>
-            <div class="col-1 middle">X</div>
-            <div class="col-8">
+            <div class="col-2 middle">X</div>
+            <div class="col-11">
                 <p class="label">Column</p>
                 <input type="number" name="column" id="Column" placeholder="Enter Column" required>
             </div>
         </div>
         <div class="label">Extra</div>
         <div class="row">
-            <div class="col-2">
-                <input type="radio" name="plus" id="plus" value="+"><label class='radio' for="plus">+</label>
+            <div class="col-4">
+                <input type="radio" name="plus" id="plus" value="0"><label class='radio' for="plus">+</label>
             </div>
-            <div class="col-2">
-                <input type="radio" name="plus" id="minus" value="-"><label class='radio' for="minus">-</label>
+            <div class="col-4">
+                <input type="radio" name="plus" id="minus" value="1"><label class='radio' for="minus">-</label>
             </div>
-            <div class="col-8">
+            <div class="col-16">
                 <input type="number" name="plusvalue" id="Plus" placeholder="Plus / Minus">
             </div>
         </div>

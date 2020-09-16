@@ -8,6 +8,10 @@
     
     $q = "select *from kacchidaily, user WHERE kacchidaily.userid = user.userid and date = '$date'";
     $results = mysqli_query($conn, $q);
+
+    $qk = "select *from kacchi WHERE date = '".date('Y-m-d')."'";
+    $resultk = mysqli_query($conn, $qk);
+    $kacchi = mysqli_fetch_array($resultk);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kacchi Daily</title>
-    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/variables-dark.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -24,7 +28,6 @@
 <body>
     <header>
         <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <a href="#" class="option"><i class="material-icons">save</i>Save</a>
         <h1>Kacchi Daily</h1>
     </header>
 
@@ -37,19 +40,32 @@
     <ul>
     <?php
     $total = 0;
-     while($row = mysqli_fetch_assoc($results)): 
-        $total = $total + $row['quantity'];?>
+     while($row = mysqli_fetch_assoc($results)):
+        if($row['extras'] == 0){$quantity1 =  $row['row'] * $row['kcolumn'] + $row['extra'];$sign = '+';}
+        else{$quantity1 =  $row['row'] * $row['kcolumn'] - $row['extra'];$sign = '-';}
+        if($row['pacchisa'] == 1){$quantity = $quantity1 - $quantity1*0.025;}else{$quantity = $quantity1;}
+        $total = $total + $quantity;?>
         <li class='card'>
             <div class="right">
-                <p class="quantity"><?php echo($row['quantity']);?></p>
+                <p class='title t-right'><?php echo($quantity);?></p>
+                <?php if($date == date('Y-m-d') && $kacchi == null):?>
+                    <a class='edit' href="./add/add-buggi-daily.php?buggiid=<?=$row['buggiid'];?>"><i class="material-icons">edit</i></a>
+                    <a class='delete' href="./delete/delete-buggi-daily.php?buggiid=<?=$row['buggiid'];?>"><i class="material-icons">delete</i></a>
+                <?php endif;?>
             </div>
-            <p class="name title"><?php echo($row['name']);?></p>
-            <p class="detail"><?php echo($row['detail']);?></p>
+            <p class="title"><?php echo($row['name']);?></p>
+            <p class="detail"><?php echo($row['row']);?> x <?php echo($row['kcolumn']);?> <?php echo($sign);?> <?php echo($row['extra']);?> = <?php echo($quantity1);?></p>
         </li>
         <?php endwhile;?>
     </ul>
     <p class="bottom">Total Kacchi Daily: <?php echo($total); ?></p>
-    <a class='fab bottom_fix' href="./add/add-kacchi-daily.php"><i class="material-icons">add</i>Add Kacchi Daily</a>
+    <div class="bottom_size_fix"></div>
+    <?php if($date == date('Y-m-d') && $kacchi == null):?>
+        <a class='fab bottom_fix' href="./add/add-kacchi-daily.php"><i class="material-icons">add</i>Add Kacchi Daily</a>
+        <div class="fab_size_fix"></div>
+        <?php if($total > 0):?>
+        <a href="./add/add-kacchi.php?quantity=<?php echo($total);?>" class="option"><i class="material-icons">done_all</i></a>
+    <?php endif;endif;?>
 </body>
 
 </html>

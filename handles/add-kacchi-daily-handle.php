@@ -5,20 +5,11 @@
     $column = $_POST['column'];
     $plus = $_POST['plus'];
     $plusvalue = $_POST['plusvalue'];
+    $pacchisa = isset($_POST['pacchisa']) ? 1 : 0;
 
-    if($plus == '+'):
-        $quantity = $row * $column + $plusvalue;
-    else:
-        $quantity = $row * $column - $plusvalue;
-    endif;
+    echo($userid.$row.$column.$plus.$plusvalue.$pacchisa);
 
-    if(isset($_POST['pacchisa']) && $_POST['pacchisa'] == 'on'):
-        $quantity = $quantity - $quantity*0.025;
-    endif;
-    $detail = $row.' x '.$column.' '.$plus.' '.$plusvalue;
-
-
-    $q = "INSERT INTO kacchidaily (userid, detail, quantity) VALUES ($userid, '$detail', $quantity)";
+    $q = "INSERT INTO kacchidaily (userid, row, kcolumn, extras, extra, pacchisa) VALUES ($userid, $row, $column, $plus, $plusvalue, $pacchisa)";
     $result = mysqli_query($conn, $q);
 
     if($result): header("Location:../kacchi-daily.php");

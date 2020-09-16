@@ -20,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buggi Daily</title>
-    <link rel="stylesheet" href="./css/variables.css">
+    <link rel="stylesheet" href="./css/variables-dark.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -62,7 +62,7 @@
         <a class='fab bottom_fix' href="./add/add-buggi-daily.php"><i class="material-icons">add</i>Add Buggi Daily</a>
         <div class="fab_size_fix"></div>
         <?php if($total > 0):?>
-            <a href="./add/add-bharai.php?quantity=<?php echo($total);?>" class="option"><i class="material-icons">save</i>Save</a>
+            <a href="./add/add-bharai.php?quantity=<?php echo($total);?>" class="option"><i class="material-icons">done_all</i></a>
     <?php endif;endif;?>
 
     <p class="bottom">Total Today Bharai: <?php echo($total);?></p>

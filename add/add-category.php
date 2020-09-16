@@ -34,7 +34,7 @@
         <p class="label">Work</p>
         <input type="text" name="work" placeholder='Enter Work' value='<?php if(isset($category)){echo($category['work']);}?>' required>
         <p class="label">Rate</p>
-        <input type="text" name="rate" placeholder='Enter Rate' value='<?php if(isset($category)){echo($category['rate']);}?>' required>
+        <input type="number" name="rate" placeholder='Enter Rate' value='<?php if(isset($category)){echo($category['rate']);}?>'>
         <input type="submit" value="Save">
     </form>
 </body>
