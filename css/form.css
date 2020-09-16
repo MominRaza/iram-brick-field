@@ -1,0 +1,62 @@
+form{
+    text-align: center;
+}
+input{
+    width: calc(100% - 44px);
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+input[type='submit']{
+    margin-top: 20px;
+    width: calc(100% - 20px);
+    background-color: var(--secondary-color);
+    color: white;
+}
+input[type='radio'],input[type='checkbox']{
+    margin-top: 20px;
+    height: 20px;
+    width: 20px;
+}
+label{
+    font-size: 20px;
+    position: relative;
+    top: -2px;
+}
+select{
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+.search input[type='search']{
+    padding-left: 15px;
+    width: calc(83% - 10px);
+    margin-right: 0;
+    border-radius: 20px 0 0 20px;
+}
+.search button{
+    margin: 10px;
+    padding: 15px 10px 11px 10px;
+    border: none;
+    margin-left: -5px;
+    width: calc(15% - 10px);
+    border-radius: 0 20px 20px 0;
+    background-color: var(--secondary-color);
+    color: white;
+}
+.label{
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+form .middle{
+    margin-top: auto;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
