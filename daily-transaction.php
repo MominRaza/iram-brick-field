@@ -15,7 +15,7 @@
     $resultsi = mysqli_query($conn, $q);
     $r = "select *from transaction, user, works where date = '$date' and type = 2 and transaction.userid = user.userid and user.workid = works.workid";
     $resultsd = mysqli_query($conn, $r);
-    $p = "select *from transaction, user, works where date = '$date' and type = 3 and transaction.userid = user.userid and user.workid = works.workid";
+    $p = "select *from transaction, user where date <= '$date' and type = 3 and transaction.userid = user.userid ORDER BY transaction.userid ASC";
     $resultsp = mysqli_query($conn, $p);
 
     $qt = "select *from transactiontotal WHERE date = '".date('Y-m-d')."'";
@@ -29,7 +29,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily</title>
-    <link rel="stylesheet" href="./css/variables-dark.css">
+    <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -41,7 +41,7 @@
     </header>
 
     <div class="date">
-        <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-05'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
+        <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-15'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
         <a href="?date=<?=$next_date;?>" class="next" <?php if($next_date > date('Y-m-d')){echo('disabled');}?>>Next Day<i class="material-icons">navigate_next</i></a>
         <p><?=$date_view;?></p>
     </div>
@@ -74,19 +74,60 @@
             <ul>
                 <?php
                 $totalpakad = 0;
+                $repeat = 0;
+                $userid = 0;
+
+                $pakad['amount'] = 0;
+                $pakad['name'] = '';
+                $i=0;
+                $length = mysqli_num_rows($resultsp);
+                
                 while($row3 = mysqli_fetch_assoc($resultsp)): 
-                    $totalpakad = $totalpakad + $row3['amount'];?>
+                    $totalpakad = $totalpakad + $row3['amount'];
+                    if($i==0){
+                        $userid = $row3['userid'];
+                    }
+                    $i++;
+                    if($userid == $row3['userid']){
+                        $pakad['name'] = $row3['name'];
+                        $pakad['amount'] += $row3['amount'];
+                    }else{
+                        $userid = $row3['userid'];
+                        if($pakad['name'] != ''){
+                    ?>
                     <li class='card'>
                         <div class="right">
-                            <p class="t-right title"><?php echo($row3['amount']);?></p>
-                            <?php if($date == date('Y-m-d') && $ttt == null):?>
-                                <a class='edit' href="./add/add-buggi-daily.php?buggiid=<?=$row['buggiid'];?>"><i class="material-icons">edit</i></a>
-                                <a class='delete' href="./delete/delete-buggi-daily.php?buggiid=<?=$row['buggiid'];?>"><i class="material-icons">delete</i></a>
+                            <p class="t-right title"><?php echo($pakad['amount']);?></p>
+                        </div>
+                        <p class="name title"><?php echo($pakad['name']);?> 2</p>
+                    </li>
+                    <?php }
+                    
+                    $pakad['name'] = $row3['name'];
+                    $pakad['amount'] = $row3['amount'];
+                    if($i == $length){ ?>
+                        <li class='card'>
+                        <div class="right">
+                            <p class="t-right title"><?php echo($pakad['amount']);?></p>
+                        </div>
+                        <p class="name title"><?php echo($pakad['name']);?> 2</p>
+                    </li>
+                    <?php } }?>
+                    <?php if($row3['date'] == $date){ ?>
+                    <li class='card'>
+                        <div class="right">
+                            <p class="t-right title new"><?php echo($row3['amount']);?></p>
+                            <?php if($row3['date'] == date('Y-m-d') && $ttt == null):?>                           
+                                <a class='edit' href="./add/add-daily-transaction.php?transactionid=<?=$row3['transactionid'];?>"><i class="material-icons">edit</i></a>
+                                <a class='delete' href="./delete/delete-daily-transaction.php?transactionid=<?=$row3['transactionid'];?>"><i class="material-icons">delete</i></a>
                             <?php endif;?>
                         </div>
                         <p class="name title"><?php echo($row3['name']);?></p>
+                        <?php if($row3['date'] == $date):?>
                         <p class="detail"><?php echo($row3['detail']);?></p>
+                        <?php endif;?>
                     </li>
+                    <?php }?>
                 <?php endwhile;?>
             </ul>
             <p class="list-bottom">Total Pakad: <?php echo($totalpakad);?></p>

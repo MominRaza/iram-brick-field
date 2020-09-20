@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iram Brick Field</title>
-    <link rel="stylesheet" href="./css/variables-dark.css">
+    <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/form.css">
     <link rel="stylesheet" href="./icons/material.css">
@@ -25,6 +25,10 @@
         <a href='./contacts.php' class="grid_element">
             <img src="./images/logo.png" alt="Contacts">
             <p class='title'>Contacts</p>
+        </a>
+        <a href='./sale-account.php' class="grid_element">
+            <img src="./images/logo.png" alt="Sale Account">
+            <p class='title'>Sale Account</p>
         </a>
         <a href='./kacchi-daily.php' class="grid_element">
             <img src="./images/logo.png" alt="Kacchi Daily">

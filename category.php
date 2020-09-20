@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category</title>
-    <link rel="stylesheet" href="./css/variables-dark.css">
+    <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -25,7 +25,7 @@
                 <a class='edit' href="./add/add-category.php?category=<?php echo($row['workid']);?>"><i class="material-icons">edit</i></a>
             </div>
             <p class='title'><?php echo($row['work']);?></p>
-            <p><?php echo($row['rate']);?></p>
+            <p><?php if($row['rate'] != 0){echo($row['rate']);}?></p>
         </li>
     <?php endwhile;?>
     </ul>

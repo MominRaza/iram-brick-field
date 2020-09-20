@@ -12,7 +12,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
-    <link rel="stylesheet" href="./css/variables-dark.css">
+    <link rel="stylesheet" href="./css/variables.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./icons/material.css">
 </head>
@@ -34,7 +34,7 @@
     </div>
     <div class="bottom_size_fix"></div>
     <div class="list_top">
-        <a href="<?php if($user['workid'] == 3): echo('./add/add-buggi-daily.php?contact='.$user['userid']); endif;?>" class="right"><i class="material-icons">add</i>Add</a>
+        <a href="<?php if($user['workid'] == 3): echo('./add/add-buggi-daily.php?contact='.$user['userid']); endif;?>" class="right"><i class="material-icons md-18">add</i>Add</a>
         <h2 class='title'>Work</h2>
     </div>
     <ul>
@@ -81,7 +81,7 @@
     </ul>
     <p class="list-bottom">Total Work: <?php echo($total);?></p>
     <div class="list_top">
-        <a href="./add/add-daily-transaction.php?contact=<?php echo($user['userid']);?>" class="right"><i class="material-icons">add</i>Add</a>
+        <a href="./add/add-daily-transaction.php?contact=<?php echo($user['userid']);?>" class="right"><i class="material-icons md-18">add</i>Add</a>
         <h2 class='title'>Paid</h2>
     </div>
     <ul>
