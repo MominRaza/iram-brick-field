@@ -26,11 +26,12 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <h1>Kacchi Daily</h1>
-    </header>
-
+    <?php
+        $title = 'Kacchi Daily';
+        $back = './';
+        include('./header.php');
+    ?>
+    
     <div class="date">
         <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-05'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
         <a href="?date=<?=$next_date;?>" class="next" <?php if($next_date > date('Y-m-d')){echo('disabled');}?>>Next Day<i class="material-icons">navigate_next</i></a>

@@ -29,10 +29,11 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <h1>Contacts</h1>
-    </header>
+    <?php
+        $title = 'Contacts';
+        $back = './';
+        include('./header.php');
+    ?>
     <form class='search' action="./contacts.php">
         <?php if(isset($category)):?>
             <input type="hidden" name="category" value='<?php echo($category);?>'>
@@ -72,10 +73,14 @@
         </li>
         <?php endwhile;?>
     </ul>
+        
+    <?php
+        $fab_title = 'Add Contact';
+        $fab_icon = 'add';
+        $fab_link = './add/add-contact.php';
+        include('./fab.php');
+    ?>
 
-    <a class='fab' href="./add/add-contact.php"><i class="material-icons">add</i>Add Contact</a>
-    <div class="fab_size_fix"></div>
-    
     <script>
         $scroll = document.getElementById('scroll');
         <?php if(isset($category)){

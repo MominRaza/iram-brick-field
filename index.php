@@ -12,7 +12,11 @@
 </head>
 
 <body>
-    <header><h1>Iram Brick Field</h1></header>
+    <?php
+        $title = 'Iram Brick Field';
+        include('./header.php');
+    ?>
+
     <form class='search' action="./contacts.php">
         <input type="search" name="search" id="search" placeholder="Search Contacts" required>
         <button type="submit"><i class="material-icons">search</i></button>
@@ -51,8 +55,13 @@
             <p class='title'>Category</p>
         </a>
     </div>
-    <a class='fab' href="./add/add-daily-transaction.php"><i class="material-icons">add</i>Add Transaction</a>
-    <div class="fab_size_fix"></div>
+    
+    <?php
+        $fab_title = 'Add Transaction';
+        $fab_icon = 'add';
+        $fab_link = './add/add-daily-transaction.php';
+        include('./fab.php');
+    ?>
 </body>
 
 </html>

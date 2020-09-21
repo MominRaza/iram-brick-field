@@ -26,10 +26,11 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <h1>Buggi Daily</h1>
-    </header>
+    <?php
+        $title = 'Buggi Daily';
+        $back = './';
+        include('./header.php');
+    ?>
     
     <div class="date">
         <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-05'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>

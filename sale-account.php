@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="./icons/material.css">
 </head>
 <body>
-    <header>
-        <a href="./" class="back"><i class="material-icons">arrow_back</i></a>
-        <h1>Sale Account</h1>
-    </header>
+    <?php
+        $title = 'Sale Account';
+        $back = './';
+        include('./header.php');
+    ?>
     <h2 class="list_top">Sale Account</h2>
     <ul>
         <?php while($row = mysqli_fetch_assoc($results)):?>
@@ -36,11 +37,29 @@
                 if($row['addha'] != 0){echo('Addha: '.$row['addha']);}
             ?></p>
             <p>C.N.: <?=$row['chno']?></p>
-            <p class="title"><a href='./contact.php?contact=1'>Gadiwan Name</a></p>
+            <p class="title">
+                <a href='./contact.php?contact=<?=$row['gadiwanid']?>'>
+                    <?php 
+                        echo(
+                            mysqli_fetch_array(
+                                mysqli_query(
+                                    $conn,
+                                    'SELECT name FROM user WHERE userid = '.$row['gadiwanid']
+                                )
+                            )['name']
+                        );    
+                    ?>
+                </a>
+            </p>
         </li>
         <?php endwhile;?>
     </ul>
-    <a href="./add/add-sale.php" class="fab"><i class="material-icons">add</i>Add Sale</a>
-    <div class="fab_size_fix"></div>
+
+    <?php
+        $fab_title = 'Add Sale';
+        $fab_icon = 'add';
+        $fab_link = './add/add-sale.php';
+        include('./fab.php');
+    ?>
 </body>
 </html>

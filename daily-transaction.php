@@ -35,10 +35,11 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <h1>Daily Transaction</h1>
-    </header>
+    <?php
+        $title = 'Daily Transaction';
+        $back = './';
+        include('./header.php');
+    ?>
 
     <div class="date">
         <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-10'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
@@ -163,14 +164,17 @@
         </div>
     </div>
 
-    <?php if($date == date('Y-m-d') && $ttt == null):?>
-        <a class='fab bottom_fix' href="./add/add-daily-transaction.php"><i class="material-icons">add</i>Add Transaction</a>
-        <div class="fab_size_fix"></div>
-
-        <a href="./add/add-transactiontotal.php?previus=<?=$previusamount;?>&income=<?=$totalincome;?>&pakad=<?=$totalpakad;?>&paid=<?=$totalpaid;?>" class="option"><i class="material-icons">done_all</i></a>
-    <?php endif;?>
-    <p class="bottom">Total Roked: <?php $total = $previusamount + $totalincome - $totalpakad - $totalpaid; echo($total); ?></p>
-    <div class="bottom_size_fix"></div>
+    <?php
+        $total = $previusamount + $totalincome - $totalpakad - $totalpaid;
+        $bottom_text = 'Total Roked: '.$total;
+        include('./bottom.php');
+        if($date == date('Y-m-d') && $ttt == null){
+            $fab_title = 'Add Transaction';
+            $fab_icon = 'add';
+            $fab_link = './add/add-daily-transaction.php';
+            include('./fab.php');?>
+            <a href="./add/add-transactiontotal.php?previus=<?=$previusamount;?>&income=<?=$totalincome;?>&pakad=<?=$totalpakad;?>&paid=<?=$totalpaid;?>" class="option"><i class="material-icons">done_all</i></a>
+    <?php }?>
 </body>
 
 </html>

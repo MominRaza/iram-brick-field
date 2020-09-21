@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="./css/form.css">
 </head>
 <body>
-    <header>
-        <h1>Signup</h1>
-    </header>
+    <?php
+        $title = 'Signup';
+        include('./header.php');
+    ?>
+    
     <form action="./handles/signup-handle.php" method="post">
         <p class="label">Username</p>
         <input type="text" name="username" id="" placeholder='Enter Username'>

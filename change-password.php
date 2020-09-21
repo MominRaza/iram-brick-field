@@ -10,10 +10,12 @@
     <link rel="stylesheet" href="./icons/material.css">
 </head>
 <body>
-    <header>
-        <a href="./" class="back"><i class="material-icons">arrow_back</i></a>
-        <h1>Change Password</h1>
-    </header>
+    <?php
+        $title = 'Change Password';
+        $back = './';
+        include('./header.php');
+    ?>
+    
     <form action="./handles/change-password-handle.php" method="post">
         <p class="label">Old Password</p>
         <input type="password" name="password" id="" placeholder='Enter Old Password'>

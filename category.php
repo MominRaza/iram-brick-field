@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="./icons/material.css">
 </head>
 <body>
-    <header>
-        <a href="./index.php" class="back"><i class="material-icons">arrow_back</i></a>
-        <h1>Categories</h1>
-    </header>
+    <?php
+        $title = 'Categories';
+        $back = './';
+        include('./header.php');
+    ?>
+    
     <ul>
     <?php while($row = mysqli_fetch_assoc($results)): ?>
         <li class='card'>

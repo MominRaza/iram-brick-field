@@ -18,10 +18,12 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./index.php"><i class="material-icons">arrow_back</i></a>
-        <h1>Bharai</h1>
-    </header>
+    <?php
+        $title = 'Bharai';
+        $back = './';
+        include('./header.php');
+    ?>
+
     <h2 class='list_top'>Bharai</h2>
     <ul>
     <?php

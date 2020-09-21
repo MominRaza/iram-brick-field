@@ -22,13 +22,12 @@
 </head>
 
 <body>
-    <header>
-        <a href="./index.php" class="back"><i class="material-icons">arrow_back</i></a>
-        <?php if($date == date('Y-m-d')):?>
-            <a href="#" class="option"><i class="material-icons">done_all</i></a>
-        <?php endif;?>
-        <h1>Nikasi Daily</h1>
-    </header>
+    <?php
+        $title = 'Nikasi Daily';
+        $back = './';
+        if($date == date('Y-m-d')){$option = '#';}
+        include('./header.php');
+    ?>
 
     <div class="date">
         <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-05'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>

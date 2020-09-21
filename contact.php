@@ -18,10 +18,12 @@
 </head>
 
 <body>
-    <header>
-        <a class='back' href="./contacts.php"><i class="material-icons">arrow_back</i></a>
-        <h1><?php echo($user['name']);?></h1>
-    </header>
+    <?php
+        $title = $user['name'];
+        $back = './contacts.php';
+        include('./header.php');
+    ?>
+    
     <div class='card'>
         <div class="left">
             <img class='avatar' src="./images/<?php echo($user['icon']);?>" alt="<?php echo($user['work']);?>">
