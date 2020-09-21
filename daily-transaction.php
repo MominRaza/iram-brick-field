@@ -41,7 +41,7 @@
     </header>
 
     <div class="date">
-        <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-15'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
+        <a href="?date=<?=$prev_date;?>" class="previus" <?php if($prev_date < '2020-09-10'){echo('disabled');}?>><i class="material-icons">navigate_before</i>Previus Day</a>
         <a href="?date=<?=$next_date;?>" class="next" <?php if($next_date > date('Y-m-d')){echo('disabled');}?>>Next Day<i class="material-icons">navigate_next</i></a>
         <p><?=$date_view;?></p>
     </div>
@@ -84,35 +84,34 @@
                 
                 while($row3 = mysqli_fetch_assoc($resultsp)): 
                     $totalpakad = $totalpakad + $row3['amount'];
-                    if($i==0){
+                    if($i == 0){
                         $userid = $row3['userid'];
                     }
                     $i++;
                     if($userid == $row3['userid']){
-                        $pakad['name'] = $row3['name'];
-                        $pakad['amount'] += $row3['amount'];
+                        if($row3['date'] != $date){
+                            $pakad['name'] = $row3['name'];
+                            $pakad['amount'] += $row3['amount'];
+                        }
                     }else{
                         $userid = $row3['userid'];
                         if($pakad['name'] != ''){
                     ?>
                     <li class='card'>
-                        <div class="right">
+                        <div class="right t-right">
                             <p class="t-right title"><?php echo($pakad['amount']);?></p>
+                            <a class='save' href="./add/add-daily-transaction.php?transactionid=<?=$row3['transactionid'];?>"><i class="material-icons">done</i></a>
                         </div>
-                        <p class="name title"><?php echo($pakad['name']);?> 2</p>
+                        <p class="name title"><?php echo($pakad['name']);?></p>
                     </li>
                     <?php }
                     
                     $pakad['name'] = $row3['name'];
                     $pakad['amount'] = $row3['amount'];
-                    if($i == $length){ ?>
-                        <li class='card'>
-                        <div class="right">
-                            <p class="t-right title"><?php echo($pakad['amount']);?></p>
-                        </div>
-                        <p class="name title"><?php echo($pakad['name']);?> 2</p>
-                    </li>
-                    <?php } }?>
+                    if($row3['date'] == $date){
+                        $pakad['amount'] = 0;
+                    }
+                    }?>
                     <?php if($row3['date'] == $date){ ?>
                     <li class='card'>
                         <div class="right">
@@ -126,6 +125,14 @@
                         <?php if($row3['date'] == $date):?>
                         <p class="detail"><?php echo($row3['detail']);?></p>
                         <?php endif;?>
+                    </li>
+                    <?php } if($i == $length && $pakad['amount'] != 0){ ?>
+                    <li class='card'>
+                        <div class="right t-right">
+                            <p class="t-right title"><?php echo($pakad['amount']);?></p>
+                            <a class='save' href="./add/add-daily-transaction.php?transactionid=<?=$row3['transactionid'];?>"><i class="material-icons">done</i></a>
+                        </div>
+                        <p class="name title"><?php echo($pakad['name']);?></p>
                     </li>
                     <?php }?>
                 <?php endwhile;?>

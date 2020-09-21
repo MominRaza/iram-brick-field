@@ -21,6 +21,9 @@
     <ul>
     <?php while($row = mysqli_fetch_assoc($results)): ?>
         <li class='card'>
+            <div class="left">
+                <img class='avatar' src="./images/<?php echo($row['icon']);?>" alt="<?php echo($row['work']);?>">
+            </div>
             <div class="right t-right">
                 <a class='edit' href="./add/add-category.php?category=<?php echo($row['workid']);?>"><i class="material-icons">edit</i></a>
             </div>

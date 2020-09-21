@@ -40,7 +40,7 @@
         <input type="search" name="search" id="search" placeholder="Search Contacts" value='<?php if(isset($search)): echo($search);endif;?>' required>
         <button type="submit"><i class="material-icons">search</i></button>
     </form>
-    <ul class='chips'>
+    <ul class='chips' id='scroll'>
         <li class='chip <?php if(!isset($category)): echo('select'); endif;?>'><a href="./contacts.php">All</a></li>
         <?php
             $qw = "select *from works";
@@ -61,11 +61,11 @@
         <li class='card'>
             <a href='./contact.php?contact=<?php echo($row['userid']);?>'>
                 <div class="left">
-                    <p class='work'><?php echo($row['work']);?></p>
+                    <img class='avatar' src="./images/<?php echo($row['icon']);?>" alt="<?php echo($row['work']);?>">
                 </div>
                 <p class="title">
-                    <span class='name'><?php echo($row['name']);?>,</span>
-                    <span class='address'><?php echo($row['address']);?></span>
+                    <?php echo($row['name']);?>,
+                    <?php echo($row['address']);?>
                 </p>
                 <p class='number'><?php echo($row['number']);?></p>
             </a>
@@ -75,8 +75,38 @@
 
     <a class='fab' href="./add/add-contact.php"><i class="material-icons">add</i>Add Contact</a>
     <div class="fab_size_fix"></div>
-    <!-- <script src='./js/data.js'></script>
-    <script src="./js/contacts.js"></script> -->
+    
+    <script>
+        $scroll = document.getElementById('scroll');
+        <?php if(isset($category)){
+            switch($category) {
+                case 3:
+                    echo('$scroll.scrollLeft = 50;');
+                break;
+                case 4:
+                    echo('$scroll.scrollLeft = 100;');
+                break;
+                case 5:
+                    echo('$scroll.scrollLeft = 200;');
+                break;
+                case 6:
+                    echo('$scroll.scrollLeft = 300;');
+                break;
+                case 7:
+                    echo('$scroll.scrollLeft = 400;');
+                break;
+                case 8:
+                    echo('$scroll.scrollLeft = 500;');
+                break;
+                case 9:
+                    echo('$scroll.scrollLeft = 600;');
+                break;
+                case 10:
+                    echo('$scroll.scrollLeft = 700;');
+                break;
+            }
+        }?>
+    </script>
 </body>
 
 </html>

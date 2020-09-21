@@ -24,7 +24,7 @@
     </header>
     <div class='card'>
         <div class="left">
-            <p><?php echo($user['work']);?></p>
+            <img class='avatar' src="./images/<?php echo($user['icon']);?>" alt="<?php echo($user['work']);?>">
         </div>
         <div class="right t-right">
             <a href="tel:<?php echo($user['number']);?>"><i class="material-icons">call</i></a>
